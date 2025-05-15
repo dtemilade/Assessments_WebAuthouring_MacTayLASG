@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>DOMAIN 2 ASSESSMENT (MACTAY)</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f4;
+      padding: 2rem;
+      color: #333;
+    }
+    h1 {
+      background-color: #0066cc;
+      color: white;
+      text-align: center;
+      padding: 10px 10px;
+      position: relative;
+    }
+
+    #student{
+      display: none;
+    }
+    .question-box {
+      background: #fff;
+      padding: 0 1rem 1rem;
+      border-radius: 8px;
+      max-width: 800px;
+      margin: 1rem auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      font-size: 2em;
+      font-weight: bold;
+    }
+    .question-number {
+      font-weight: bold;
+      color: #0066cc;
+    }
+    .buttons {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    button {
+      padding: 0.6rem 1rem;
+      background-color: #0066cc;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:disabled {
+      background-color: #aaa;
+    }
+    .retry-btn {
+      position: fixed;
+      right: 30px;
+      bottom: 30px;
+      padding: 12px 25px;
+      font-size: 1rem;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      display: none;
+    }
+    #timer {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background: #007BFF;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 1.2rem;
+    }
+      @media screen and (max-width:600px){
+
+      .question-box {
+    max-width: 100%;
+    font-size: 0.5em;
+}
+button {
+    margin: 0.2em;
+    padding: 0.2em;
+}
+  
+}
+  </style>
+</head>
+<body>
+
+<div id="timer"></div>
+
+<form id="assessment">
+  <div class="question-box">
+    <h1 style="font-size: 0.8em">DOMAIN 2 ASSESSMENT (MACTAY)</h1>
+    <div class="question-number" id="questionNumber">Task 1</div>
+    <div class="question-text" id="questionText">Loading...</div>
+    <div class="buttons">
+      <button type="button" id="prevBtn">Previous</button>
+      <button type="button" id="completeBtn">Mark Complete</button>
+      <button type="button" id="reviewBtn">Mark Review</button>
+      <button type="button" id="nextBtn">Next</button>
+      <button type="submit" id="submitBtn">Submit</button>
+    </div>
+  </div>
+</form>
+
+    <div id="student">
+      <label for="userName">Name:</label><br>
+      <input type="text" id="userName" name="userName" required><br><br>
+
+      <label for="userEmail">Email:</label><br>
+      <input type="email" id="userEmail" name="userEmail" required><br><br>
+    </div>
+
+<button class="retry-btn" id="retryBtn">Go Home</button>
+
+<script>
+  const tasks = [
+    "Inside music store website folder, create a new page, page.html. Setup an ftp server for page.html using the following details: Server name: music store ftp address: ftp.musicstore.com Username: music_store Password: music@2025 Root directory: /public_html/. Take a screenshot, save as ftp server, save or paste it in the exam folder inside music store website.",
+    "Click on index.html file in the music store folder, enable file checkout so that multiple users can edit the site. Take screenshot, save as checkout in exam folder.",
+    "In the music store website folder, locate page.html and cloak it, to prevent Dreamweaver from performing any operation on it. Take a screenshot of file panel showing the cloaked file. Save as cloak into exam folder.",
+    "Click on page.html in the music store folder, change new document settings to the following: Default extension: .htm, DTD: Html 4.01 transitional, Default document: HTML. Take a screenshot and save as default in the exam folder. Do not apply the settings.",
+    "Create the following pages in the music store folder: Product.html, Contact.html. Use the CSS Designer to create styles.css and link it to index.html in the music store website folder. Take a screenshot of the file panel showing all created pages and save as pages in exam folder.",
+    "Show how to create a new bootstrap starter templates. Take a screenshot, save as bootstrap in exam folder.",
+    "On the index.html page of the pexels website folder, add alternative text to the first three images under portfolio with id of one, two and three: image 1 (id one image), image 2 (id two image), image 3 (id three image).",
+    "Use the index.html file in the computer store website to create a template named computer template. Make the main section of the template editable.",
+    "Inside computer store folder, create about us page, about.html, apply the template you created in question 8 above to the newly created about.html.",
+    "In the data science website folder, create a new template named data template. Create editable region for: Page title and Main content. Save the template in the template folder.",
+    "Using the data template created in question 10, create a new page called services.html in the data science website folder, apply the template, insert 'Our Services' and use the snippet panel to insert two short paragraphs of lorem in the main content region.",
+    "In the data science website folder, use the file panel to view files that are about to be uploaded to the remote server. Take a screenshot, save as remote in the exam folder.",
+    "Use the application bar to create a new site called LASG. Ensure that the local site folder is history.",
+    "Use the application bar to add the following window sizes: Width: 1022, Height: 777, Description: fakepad. Take a screenshot, name it fakepad and save in the exam folder of computer store.",
+    "In music store website folder, create a media folder and move all media into the newly created folder. Take a screenshot, name it media and save in the exam folder.",
+    "Click on index.html, in music store folder website, replace audio and video with audio.mp3 and video.mp4. Add autoplay and make video play automatically once the webpage is loaded. Adjust video width and height to 540px and 260px. Take screenshot, name it media and save in exam folder.",
+    "In the index.html of friends meet, in the gallery section, replace image1.jpg with image6.jpg and vice versa. Take a screenshot of gallery section in design view, name it gallery and save in exam folder in friends meet.",
+    "In the index.html of friends meet, in the friends-stats section, make the table head row a header.",
+    "In the index.html of pexels website folder, replace Instagram and Facebook in the footer section with icons. Adjust width and height to 50px each.",
+    "Disable linting in index.html of my music store folder due to visible error at line 24. Take a screenshot of the linting setting page, name it LINT and save in exam folder.",
+    "Change view in index.html of the data science website folder so that the code section appears at the top while design at the bottom. Take a screenshot, name it view and save in exam folder."
+  ];
+
+
+  let currentIndex = 0;
+  const answers = Array(tasks.length).fill("");
+  const status = Array(tasks.length).fill("pending");
+
+  const questionNumber = document.getElementById("questionNumber");
+  const questionText = document.getElementById("questionText");
+
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const completeBtn = document.getElementById("completeBtn");
+  const reviewBtn = document.getElementById("reviewBtn");
+  const submitBtn = document.getElementById("submitBtn");
+  const retryBtn = document.getElementById("retryBtn");
+
+  const nameInput = document.getElementById("userName");
+  const emailInput = document.getElementById("userEmail");
+
+    let userName = nameInput.value.trim();
+    let userEmail = emailInput.value.trim();
+
+  while (!userName || userName.trim() === "") {
+    userName = prompt("Enter your full name (required):");
+  }
+
+  while (!userEmail || userEmail.trim() === "") {
+    userEmail = prompt("Enter your email (required):");
+  }
+
+  const startTime = new Date();
+
+  function formatTime(date) {
+    return date.toLocaleTimeString([], { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  }
+
+  function displayTask(index) {
+    questionNumber.textContent = `Task ${index + 1}`;
+    questionText.textContent = tasks[index];
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index === tasks.length - 1;
+  }
+
+  prevBtn.addEventListener("click", () => {
+    if (currentIndex > 0) currentIndex--;
+    displayTask(currentIndex);
+  });
+
+  nextBtn.addEventListener("click", () => {
+    if (currentIndex < tasks.length - 1) currentIndex++;
+    displayTask(currentIndex);
+  });
+
+  completeBtn.addEventListener("click", () => {
+    status[currentIndex] = "complete";
+    if (currentIndex < tasks.length - 1) currentIndex++;
+    displayTask(currentIndex);
+  });
+
+  reviewBtn.addEventListener("click", () => {
+    status[currentIndex] = "review";
+    if (currentIndex < tasks.length - 1) currentIndex++;
+    displayTask(currentIndex);
+  });
+
+  document.getElementById("retryBtn").addEventListener("click", function () {
+  window.location.href = "/";
+});
+
+
+  document.getElementById("assessment").addEventListener("submit", function (e) {
+    e.preventDefault();
+    clearInterval(timerInterval);
+
+     // Disable all assessment buttons
+    const buttons = document.querySelectorAll(".buttons button");
+    buttons.forEach(btn => btn.disabled = true);
+
+    const endTime = new Date();
+
+    alert(
+      `🎓 DOMAIN 2 ASSESSMENT (MACTAY)\n\n` +
+      `👤 Name: ${userName || "Not Provided"}\n` +
+      `📧 Email: ${userEmail || "Not Provided"}\n\n` +
+      `🕒 Start Time: ${formatTime(startTime)}\n` +
+      `✅ Completion Time: ${formatTime(endTime)}\n\n`
+    );
+
+    retryBtn.style.display = "block";
+  });
+
+  // Timer logic
+  const urlParams = new URLSearchParams(window.location.search);
+let minutes = parseInt(urlParams.get('time')) || 40;
+let timeLeft = minutes * 60;
+
+  const timerDisplay = document.getElementById("timer");
+  const timerInterval = setInterval(() => {
+    const mins = Math.floor(timeLeft / 60);
+    const secs = timeLeft % 60;
+    timerDisplay.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+    if (--timeLeft < 0) {
+      clearInterval(timerInterval);
+      document.getElementById("assessment").requestSubmit();
+    }
+  }, 1000);
+
+  displayTask(currentIndex);
+</script>
+</body>
+</html>

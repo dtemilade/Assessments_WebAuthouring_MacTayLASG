@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>DOMAIN 4 & 5 ASSESSMENT (MACTAY)</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f4;
+      padding: 2rem;
+      color: #333;
+    }
+    h1 {
+      background-color: #a67e20;
+      color: white;
+      text-align: center;
+      padding: 10px 10px;
+      position: relative;
+    }
+
+    #student{
+      display: none;
+    }
+    .question-box {
+      background: #fff;
+      padding: 0 1rem 1rem;
+      border-radius: 8px;
+      max-width: 800px;
+      margin: 1rem auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      font-size: 2em;
+      font-weight: bold;
+    }
+    .question-number {
+      font-weight: bold;
+      color: #a67e20;
+    }
+    .buttons {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    button {
+      padding: 0.6rem 1rem;
+      background-color: #0066cc;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:disabled {
+      background-color: #aaa;
+    }
+    .retry-btn {
+      position: fixed;
+      right: 30px;
+      bottom: 30px;
+      padding: 12px 25px;
+      font-size: 1rem;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      display: none;
+    }
+    #timer {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background: #0066cc;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 1.2rem;
+    }
+      @media screen and (max-width:600px){
+
+      .question-box {
+    max-width: 100%;
+    font-size: 0.5em;
+}
+button {
+    margin: 0.2em;
+    padding: 0.2em;
+}
+  
+}
+  </style>
+</head>
+<body>
+
+<div id="timer"></div>
+
+<form id="assessment">
+  <div class="question-box">
+    <h1 style="font-size: 0.8em">DOMAIN 4 & 5 ASSESSMENT (MACTAY)</h1>
+    <div class="question-number" id="questionNumber">Task 1</div>
+    <div class="question-text" id="questionText">Loading...</div>
+    <div class="buttons">
+      <button type="button" id="prevBtn">Previous</button>
+      <button type="button" id="completeBtn">Mark Complete</button>
+      <button type="button" id="reviewBtn">Mark Review</button>
+      <button type="button" id="nextBtn">Next</button>
+      <button type="submit" id="submitBtn">Submit</button>
+    </div>
+  </div>
+</form>
+
+    <div id="student">
+      <label for="userName">Name:</label><br>
+      <input type="text" id="userName" name="userName" required><br><br>
+
+      <label for="userEmail">Email:</label><br>
+      <input type="email" id="userEmail" name="userEmail" required><br><br>
+    </div>
+
+<button class="retry-btn" id="retryBtn">Try Again</button>
+
+<script>
+  const tasks = [
+    "Use the Application bar to insert a form text area after the hero section in computer store website. Name this area, comments, and give it 6 rows and 50 columns. Click anywhere in the document when done and take a screenshot.",
+    "Add a block tag after heading two of hero section in index.html of computer store and type a sentence, add an inline tag within the block tag created above. After the hero section add another section with ID of aside inside the aside section add heading one and a paragraph.",
+    " in index.hml of computer store add the following content to the empty heading one and paragraph for heading one add “welcome to smartphone section”  add lorem snippets as paragraph,  use the CSS designer create a selector for a heading one and add the following properties background color: black and test color: white",
+    "check for broken links & external links in the index.html of history website, take a screenshot of both links and add to exam folder.",
+    "Generate HTML reports for a missing alt text in index.html of music store website. Take a screenshot of the site reports and add to exam folder.",
+    "In index .html of music store website. There are three images with a missing alt text according to the site reports. Correct all three images and run the site reports again. Take a screenshot and add to exam folder.",
+    "Add  blockquote  to the paragraph text after “end sars movement” in history website. on the same page find “Africa's fastest growing city” and add an em tag, in the same paragraph add span to “established in 1967”.",
+    "Add the following CSS properties to the span tag in index.html of history website: *Background color: black *Text color: white. Add width of 15px to top and buttom of lagos skyline image with color red and double style",
+    "Rename the video file in history website to history.mp4, add the video before colonial era image give it title and ID of History width and height of 400 pixel, add the following style to the header’s heading one: all side border five pixel dotted style and white color",
+    "Add the following to an XML sitemap of friends meet website in the index.html document. ***<urlset xmins = http://www.sitemap.org/schemas/sitemap/0.9 <url> ***<loc> http://www.friendsmeet.com/index.html</loc> <url> ***</urlset> .   Take a screenshot and add to exam folder.",
+    " create a description div with the ID description and add description one, two, three etc as text to all the six images in index.html of pexels website portfolio section, add the following style to the description text font family:baskerville group, text align center, font color is green font weight is 800 and font size 24 pixels",
+    "give all the images in music website index document ID of musix style with width and height of 200 pixel",
+    "Add 400px by 400px video.mp4 after the main section in Friends meet website make the video display image 10 before it starts playing",
+    "Upload the content of index.html of computer store website to w3c for validation. Take a screenshot and add to exam folder",
+    "In the index.html of data Science website, make the content of intro section and chat section float side by side using CSS designer. After summary section add audio.mp3 and display “your browser does not support this element” if a browser does not support the audio file",
+    "Create services.html page in computer store website, open index.hml in Friends meet website after benefits section add heading three tag with the text “get best computing gadgets deal” and link it to services.html in computer store, give the paragraph and ID of deal and apply black background, make link color white",
+    "in Friends meet website, adjust the width of the header to 80%, add a paragraph tag before H2 in gallery section with the text “pagetop” scroll down before the footer and add another paragraph with text “back to top” make the back to top move up to the page to the beginning of the main section when clicked",
+    "Perform a cleanup on index.html in friends meet website to get rid of redundant or empty tag. Take a screenshot after you checked ok and add to exam folder.",
+    "Create a css folder in the data science website folder. create a new css file called main.css and save it into the css folder. Using the index.html and main.css **Add a rule for the h2 tag **Set the rule for the h2 tag to use the arial font as its default, and use a sans-serif font if arial is not available. Save the document",
+    "Click on index.html in the history website folder, goto asset panel and copy #004d40 color code, apply it to all paragraph within index.html",
+    "In the index.html of pexels website folder, use spell check to change the word pentagram to onstage. Take a screenshot and add to exam folder"
+  ];
+
+
+  let currentIndex = 0;
+  const answers = Array(tasks.length).fill("");
+  const status = Array(tasks.length).fill("pending");
+
+  const questionNumber = document.getElementById("questionNumber");
+  const questionText = document.getElementById("questionText");
+
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const completeBtn = document.getElementById("completeBtn");
+  const reviewBtn = document.getElementById("reviewBtn");
+  const submitBtn = document.getElementById("submitBtn");
+  const retryBtn = document.getElementById("retryBtn");
+
+  const nameInput = document.getElementById("userName");
+  const emailInput = document.getElementById("userEmail");
+
+    let userName = nameInput.value.trim();
+    let userEmail = emailInput.value.trim();
+
+  while (!userName || userName.trim() === "") {
+    userName = prompt("Enter your full name (required):");
+  }
+
+  while (!userEmail || userEmail.trim() === "") {
+    userEmail = prompt("Enter your email (required):");
+  }
+
+  const startTime = new Date();
+
+  function formatTime(date) {
+    return date.toLocaleTimeString([], { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  }
+
+  function displayTask(index) {
+    questionNumber.textContent = `Task ${index + 1}`;
+    questionText.textContent = tasks[index];
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index === tasks.length - 1;
+  }
+
+  prevBtn.addEventListener("click", () => {
+    if (currentIndex > 0) currentIndex--;
+    displayTask(currentIndex);
+  });
+
+  nextBtn.addEventListener("click", () => {
+    if (currentIndex < tasks.length - 1) currentIndex++;
+    displayTask(currentIndex);
+  });
+
+  completeBtn.addEventListener("click", () => {
+    status[currentIndex] = "complete";
+    if (currentIndex < tasks.length - 1) currentIndex++;
+    displayTask(currentIndex);
+  });
+
+  reviewBtn.addEventListener("click", () => {
+    status[currentIndex] = "review";
+    if (currentIndex < tasks.length - 1) currentIndex++;
+    displayTask(currentIndex);
+  });
+
+  document.getElementById("retryBtn").addEventListener("click", function () {
+  window.location.href = "/";
+});
+
+
+  document.getElementById("assessment").addEventListener("submit", function (e) {
+    e.preventDefault();
+    clearInterval(timerInterval);
+
+     // Disable all assessment buttons
+    const buttons = document.querySelectorAll(".buttons button");
+    buttons.forEach(btn => btn.disabled = true);
+
+    const endTime = new Date();
+
+    alert(
+      `🎓 DOMAIN 4 & 5 ASSESSMENT (MACTAY)\n\n` +
+      `👤 Name: ${userName || "Not Provided"}\n` +
+      `📧 Email: ${userEmail || "Not Provided"}\n\n` +
+      `🕒 Start Time: ${formatTime(startTime)}\n` +
+      `✅ Completion Time: ${formatTime(endTime)}\n\n`
+    );
+
+    retryBtn.style.display = "block";
+  });
+
+  // Timer logic
+  const urlParams = new URLSearchParams(window.location.search);
+let minutes = parseInt(urlParams.get('time')) || 40;
+let timeLeft = minutes * 60;
+
+  const timerDisplay = document.getElementById("timer");
+  const timerInterval = setInterval(() => {
+    const mins = Math.floor(timeLeft / 60);
+    const secs = timeLeft % 60;
+    timerDisplay.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+    if (--timeLeft < 0) {
+      clearInterval(timerInterval);
+      document.getElementById("assessment").requestSubmit();
+    }
+  }, 1000);
+
+  displayTask(currentIndex);
+</script>
+</body>
+</html>

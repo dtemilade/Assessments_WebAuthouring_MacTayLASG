@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>DOMAIN 3 ASSESSMENT (MACTAY)</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f4;
+      padding: 2rem;
+      color: #333;
+    }
+    h1 {
+      background-color: #901206;
+      color: white;
+      text-align: center;
+      padding: 10px 10px;
+      position: relative;
+    }
+
+    #student{
+      display: none;
+    }
+    .question-box {
+      background: #fff;
+      padding: 0 1rem 1rem;
+      border-radius: 8px;
+      max-width: 800px;
+      margin: 1rem auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      font-size: 2em;
+      font-weight: bold;
+    }
+    .question-number {
+      font-weight: bold;
+      color: #901206;
+    }
+    .buttons {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    button {
+      padding: 0.6rem 1rem;
+      background-color: #0066cc;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:disabled {
+      background-color: #aaa;
+    }
+    .retry-btn {
+      position: fixed;
+      right: 30px;
+      bottom: 30px;
+      padding: 12px 25px;
+      font-size: 1rem;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      display: none;
+    }
+    #timer {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background: #007BFF;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 1.2rem;
+    }
+
+      @media screen and (max-width:600px){
+
+      .question-box {
+    max-width: 100%;
+    font-size: 0.5em;
+}
+button {
+    margin: 0.2em;
+    padding: 0.2em;
+}
+  
+}
+  </style>
+</head>
+<body>
+
+<div id="timer"></div>
+
+<form id="assessment">
+  <div class="question-box">
+    <h1 style="font-size: 0.8em">DOMAIN 3 ASSESSMENT (MACTAY)</h1>
+    <div class="question-number" id="questionNumber">Task 1</div>
+    <div class="question-text" id="questionText">Loading...</div>
+    <div class="buttons">
+      <button type="button" id="prevBtn">Previous</button>
+      <button type="button" id="completeBtn">Mark Complete</button>
+      <button type="button" id="reviewBtn">Mark Review</button>
+      <button type="button" id="nextBtn">Next</button>
+      <button type="submit" id="submitBtn">Submit</button>
+    </div>
+  </div>
+</form>
+
+    <div id="student">
+      <label for="userName">Name:</label><br>
+      <input type="text" id="userName" name="userName" required><br><br>
+
+      <label for="userEmail">Email:</label><br>
+      <input type="email" id="userEmail" name="userEmail" required><br><br>
+    </div>
+
+<button class="retry-btn" id="retryBtn">Try Again</button>
+
+<script>
+  const tasks = [
+    "Create a new website folder, in the assessment file folder with index.html. Use the DOM to create a simple page structure consisting of nav, ul, 2lis, main with 3 sections and footer with a paragraph. Take a screenshot of the DOM showing tag hierarchy, save as DOM and add to exam folder",
+    "In the DOM section of index.html in pexels website folder, wrap header, nav, main, footer inside a container with id “wrapper”. Take a screenshot of the DOM showing how they are nested inside the container, name it wrapper and add in exam folder.",
+    "In the history website folder, add a media query to the style.css file that applies to screens with a maximum width of 500 pixels. Use the media query to:Hide the section with class events",
+    "Create a social media folder inside history website folder, Copy all social media icons into the newly created social media folder.",
+    "Change the page properties of the index.html inside history website folder to use the following : Background color - #333333, Left margin : 4px. Save the document",
+    "In the index.html file inside pexels  website folder, use the DOM panel to add an aside tag that surrounds the section with the id of services. Assign the aside tag a class of sidebar. Save your document.",
+    "In the music store website folder, add a media query that applies to devices with screens, and has a maximum pixel width of 400 pixels to the style.css.",
+    "Open index.html in pexels website folder, create hiphop.html document, link image 5.jpg to hiphop.html. Change height to 400 and width to 400. give it an id of wizzy, map any  of the glasses circle and link to https://www.fendi.com",
+    "In the history website folder, create a stats.html page  and add the following (a table with 3 rows 4 cols top header with SN, LGA, POPULATION, ALLOCATION; then provide abstract details for row 2 and 3) in the body section.",
+    "Create an heading one tag before the table in stats.html in history website folder. Create a new selector id for the table with the id lgatable and add the following properties: Text color - #F8F3F3, Background-color - #0C1C39, Text align – center, Box-sizing – border-box.",
+    "Open index.html page in music store website folder. Replace digital piano image with video.mp4 file. .0560Make sure the controls display and the width of the video to 480 pixels and the height to 270 pixels. Save your changes when you are done.",
+    "Create a css folder in the data science website folder. create a new css file called main.css and save it into the css folder. Using the index.html and main.css. 1. Add a rule for the h2 tag 2. Set the rule for the h2 tag to use the arial font as its default, and use a sans-serif font if arial is not available. Save the document.",
+    "In the index.html page inside the data science website folder, add a class named excel_data, that can only apply to h1 tag on the current page. In the class, set the text to use the color #990000. Apply the class to the paragraph in the footer section.",
+    "Change the page properties of the index.html inside friends meet website folder to use the following attributes: Background color - #333333, Left margin : 4px. Save the document",
+    "In the index.html file inside music store website folder. Add items after  the h2 tag in our product section using both ordered and unordered list. 1. Percussion *Drum *guitar *Berry beat 2. Orchestral *Spring *chesst *piano 3. String *Ganius *fada bar *Granola bar",
+    "Inside friends meet website folder, create a new page, jobs.html. Setup an ftp server for jobs.html using the following details: *Server name: friends meet *ftp address: ftp.friendsmeet.com *Username: friends_meet *Password: friends@2025 *Root directory: /public_html/. Take a screenshot, save as friends server, add too exam folder",
+    "Click on index.html in the history website folder, goto asset panel and copy #004d40 color code, apply it to all paragraph within index.html",
+    "Add the following media files in asset panel of index.html in history website folder site section to favorites. *1.Png *Icon_twitter.png *1.Jpeg *10.jpeg",
+    "Use the pexels website folder to Show how you will upload file to a file server, take a screenshot, name it server and save in exam folder",
+    "Click on index.html in music store folder, add  alt tag to the following images. *Electric.jpg = electric *Drum.jpg = drum Digital *piano.jpg = piano. Also change the width and height of the images to 500px by 400px",
+    "Use the application bar to run the clean up HTML tool for the purpose of removing empty container tags and when possible and showing logon completion in index.html of history website. Screenshot, name clean up2 and add to exam folder."
+  ];
+
+
+  let currentIndex = 0;
+  const answers = Array(tasks.length).fill("");
+  const status = Array(tasks.length).fill("pending");
+
+  const questionNumber = document.getElementById("questionNumber");
+  const questionText = document.getElementById("questionText");
+
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const completeBtn = document.getElementById("completeBtn");
+  const reviewBtn = document.getElementById("reviewBtn");
+  const submitBtn = document.getElementById("submitBtn");
+  const retryBtn = document.getElementById("retryBtn");
+
+  const nameInput = document.getElementById("userName");
+  const emailInput = document.getElementById("userEmail");
+
+    let userName = nameInput.value.trim();
+    let userEmail = emailInput.value.trim();
+
+  while (!userName || userName.trim() === "") {
+    userName = prompt("Enter your full name (required):");
+  }
+
+  while (!userEmail || userEmail.trim() === "") {
+    userEmail = prompt("Enter your email (required):");
+  }
+
+  const startTime = new Date();
+
+  function formatTime(date) {
+    return date.toLocaleTimeString([], { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  }
+
+  function displayTask(index) {
+    questionNumber.textContent = `Task ${index + 1}`;
+    questionText.textContent = tasks[index];
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index === tasks.length - 1;
+  }
+
+  prevBtn.addEventListener("click", () => {
+    if (currentIndex > 0) currentIndex--;
+    displayTask(currentIndex);
+  });
+
+  nextBtn.addEventListener("click", () => {
+    if (currentIndex < tasks.length - 1) currentIndex++;
+    displayTask(currentIndex);
+  });
+
+  completeBtn.addEventListener("click", () => {
+    status[currentIndex] = "complete";
+    if (currentIndex < tasks.length - 1) currentIndex++;
+    displayTask(currentIndex);
+  });
+
+  reviewBtn.addEventListener("click", () => {
+    status[currentIndex] = "review";
+    if (currentIndex < tasks.length - 1) currentIndex++;
+    displayTask(currentIndex);
+  });
+
+  document.getElementById("retryBtn").addEventListener("click", function () {
+  window.location.href = "/";
+});
+
+
+  document.getElementById("assessment").addEventListener("submit", function (e) {
+    e.preventDefault();
+    clearInterval(timerInterval);
+
+     // Disable all assessment buttons
+    const buttons = document.querySelectorAll(".buttons button");
+    buttons.forEach(btn => btn.disabled = true);
+
+    const endTime = new Date();
+
+    alert(
+      `🎓 DOMAIN 3 ASSESSMENT (MACTAY)\n\n` +
+      `👤 Name: ${userName || "Not Provided"}\n` +
+      `📧 Email: ${userEmail || "Not Provided"}\n\n` +
+      `🕒 Start Time: ${formatTime(startTime)}\n` +
+      `✅ Completion Time: ${formatTime(endTime)}\n\n`
+    );
+
+    retryBtn.style.display = "block";
+  });
+
+  // Timer logic
+  const urlParams = new URLSearchParams(window.location.search);
+let minutes = parseInt(urlParams.get('time')) || 40;
+let timeLeft = minutes * 60;
+
+  const timerDisplay = document.getElementById("timer");
+  const timerInterval = setInterval(() => {
+    const mins = Math.floor(timeLeft / 60);
+    const secs = timeLeft % 60;
+    timerDisplay.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+    if (--timeLeft < 0) {
+      clearInterval(timerInterval);
+      document.getElementById("assessment").requestSubmit();
+    }
+  }, 1000);
+
+  displayTask(currentIndex);
+</script>
+</body>
+</html>
