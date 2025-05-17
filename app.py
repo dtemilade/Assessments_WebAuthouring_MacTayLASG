@@ -12,7 +12,9 @@ def start():
     time = request.form.get('time')
 
     # query parameter
-    if domain == 'domain2':
+    if domain == 'domain1':
+        return redirect(url_for('domain1', time=time))
+    elif domain == 'domain2':
         return redirect(url_for('domain2', time=time))
     elif domain == 'domain3':
         return redirect(url_for('domain3', time=time))
@@ -20,6 +22,10 @@ def start():
         return redirect(url_for('domain4and5', time=time))
     else:
         return "Invalid selection."
+
+@app.route('/domain1')
+def domain1():
+    return render_template('domain1.html')
 
 @app.route('/domain2')
 def domain2():

@@ -1,0 +1,857 @@
+
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Domain 1 Assessment</title>
+  <style>
+      
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+      background: #f5f5f5;
+    }
+    h1 {
+      text-align: center;
+    }
+    .question {
+    background: #fff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 1rem;
+      background-color: #310643;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    
+       .retry-btn {
+      position: fixed;
+      right: 30px;
+      bottom: 30px;
+      padding: 12px 25px;
+      font-size: 1rem;
+      background-color: #310643;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      display: none;
+    }
+      
+    #timer {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      padding: 8px 16px;
+      border-radius: 6px;
+    }
+      
+@media screen and (max-width:390px){
+.question {
+    background: #fff;
+    padding: 0.2rem;
+    margin-bottom: 2rem;
+    border-radius: 3px;
+    }
+}
+
+@media screen and (min-width:400px){
+body {
+    font-size: 2em;
+    }
+select {
+    font-size: 1em;
+    }
+}
+  </style>
+</head>
+                <body>
+                    <div id="timer" style="font-size:2.5rem; background-color: blue; color:white; text-align:right;"></div>
+
+                    <h1>Domain 1 Assessment</h1>
+                    <form id="assessmentForm">
+                        <div class="question">
+                            <p><strong> A customer reports that they are unable to submit a contact form on a website. What might be the cause? (Select all that apply.)</strong></p>
+                            <label><input type="checkbox" name="q1a" value="1"> Form validation errors</label><br>
+                            <label><input type="checkbox" name="q1b" value="1"> Required fields left empty</label><br>
+                            <label><input type="checkbox" name="q1c" value="1"> Broken submit button</label><br>
+                            <label><input type="checkbox" name="q1d" value="0"> Secure SSL certificate</label><br>
+                        </div>
+
+                        <div class="question">
+                            <p><strong> A client complains that their website is taking too long to load. What shotabled the web developer do FIRST?</strong></p>
+                            <label><input type="radio" name="q2" value="1"> Reduce image file sizes and enable caching</label><br>
+                            <label><input type="radio" name="q2" value="Remove all CSS styling"> Remove all CSS styling</label><br>
+                            <label><input type="radio" name="q2" value="Convert the website to a PDF format"> Convert the website to a PDF format</label><br>
+                            <label><input type="radio" name="q2" value="Block all visitors from high-traffic regions"> Block all visitors from high-traffic regions</label><br>
+                        </div>
+
+                        <div class="question">
+                            <p><strong> Match each language with its purpose:</strong></p>
+                            <table width="auto" border="1">
+                                <tbody>
+                                    <tr>
+                                        <td width="auto">&nbsp;is  used to create the content structure of the webpage.<br></td>
+                                        <td width="auto">
+                                            <select name="select3" id="q3a">
+                                                <option value="0">Select option</option>
+                                                <option value="0">Javascript</option>
+                                                <option value="1">HTML</option>
+                                                <option value="0">CSS</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;is  used to style the appearance of the webpage.</td>
+                                        <td>
+                                            <select name="select3" id="q3b">
+                                                <option value="0">Select option</option>
+                                                <option value="0">Javascript</option>
+                                                <option value="0">HTML</option>
+                                                <option value="1">CSS</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;is  used to assign behaviors to elements in the webpage</td>
+                                        <td>
+                                            <select name="select" id="q3c">
+                                                <option value="0">Select option</option>
+                                                <option value="1">Javascript</option>
+                                                <option value="0">HTML</option>
+                                                <option value="0">CSS</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br>
+                        </div>
+
+                        <div class="question">
+                            <p><strong> Match CSS hyperlink states with behavior:</strong></p>
+                            <table width="auto" border="1">
+                                <tbody>
+                                    <tr>
+                                        <td width="auto">&nbsp;styles  a link that the user has not yet clicked on.</td>
+                                        <td width="auto">
+                                            <select name="select2" id="q4a">
+                                                <option value="0">Select option</option>
+                                                <option value="1">a:link</option>
+                                                <option value="0">a:active</option>
+                                                <option value="0">a:hover</option>
+                                                <option value="0">a:visited</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;styles  a link when the user moves their mouse over it.</td>
+                                        <td>
+                                            <select name="select2" id="q4b">
+                                                <option value="0">Select option</option>
+                                                <option value="0">a:link</option>
+                                                <option value="0">a:active</option>
+                                                <option value="1">a:hover</option>
+                                                <option value="0">a:visited</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;styles  a link when the user clicks their mouse on it.</td>
+                                        <td>
+                                            <select name="select2" id="q4c">
+                                                <option value="0">Select option</option>
+                                                <option value="0">a:link</option>
+                                                <option value="1">a:active</option>
+                                                <option value="0">a:hover</option>
+                                                <option value="0">a:visited</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;styles  a link that the user has already clicked on.</td>
+                                        <td>
+                                            <select name="select2" id="q4d">
+                                                <option value="0">Select option</option>
+                                                <option value="0">a:link</option>
+                                                <option value="0">a:active</option>
+                                                <option value="0">a:hover</option>
+                                                <option value="1">a:visited</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br>
+                        </div>
+                        <div class="question">
+                            <p><strong> A  business wants to improve the accessibility of its website. Which strategies  should they implement? (Select all that apply.)</strong></p>
+                            <label>
+                                <input type="checkbox" name="q5a" value="1">
+                                Use  alternative text (alt text) for images
+                            </label>
+                            <br>
+                            <label>
+                                <input type="checkbox" name="q5b" value="1">
+                                Use  high contrast colors for readability
+                            </label>
+                            <br>
+                            <label>
+                                <input type="checkbox" name="q5c" value="0">
+                                Use  small font sizes for better aesthetics
+                            </label>
+                            <br>
+                            <label>
+                                <input type="checkbox" name="q5d" value="1">
+                                Provide  keyboard navigation support
+                            </label>
+                            <br>
+                        </div>
+                        <div class="question">
+                            <p><strong> Which  of the following options is NOT a feature used to make content accessible for  people with disabilities? </strong></p>
+                            <label>
+                                <input type="radio" name="q6" value="0">
+                                Screen  reader support
+                            </label>
+                            <br>
+                            <label>
+                                <input type="radio" name="q6" value="0">
+                            </label>
+                            Text  equivalents for graphics<br>
+                            <label>
+                                <input type="radio" name="q6" value="1">
+                                Disabling  keyboard shortcuts
+                            </label>
+                            <br>
+                            <label>
+                                <input type="radio" name="q6" value="0">
+                                High  contrast display colors
+                            </label>
+                            <br>
+                        </div>
+                        <div class="question">
+                            <p><strong> A  travel website wants to improve its SEO ranking. Which strategy would be MOST  effective? </strong></p>
+                            <label>
+                                <input type="radio" name="q7" value="1">
+                                Add  relevant keywords to page titles and descriptions
+                            </label>
+                            <br>
+                            <label>
+                                <input type="radio" name="q2" value="0">
+                            </label>
+                            Remove  images to reduce page size<br>
+                            <label>
+                                <input type="radio" name="q2" value="0">
+                                Disable  comments to avoid spam
+                            </label>
+                            <br>
+                            <label>
+                                <input type="radio" name="q2" value="0">
+                                Use  more special characters in the website URL
+                            </label>
+                            <br>
+                        </div>
+                        <div class="question">
+                            <p><strong> Determine  whether each statement is correct or not by choosing Yes or No</strong></p>
+                            <table width="auto" border="1">
+                                <tbody>
+                                    <tr>
+                                        <td width="auto">&nbsp;External  style rules take precedence over internal syle rules.</td>
+                                        <td width="auto">
+                                            <select name="select4" id="select">
+                                                <option value="0">Select option</option>
+                                                <option value="0">YES</option>
+                                                <option value="1">NO</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;Inline  style rules can be applied to individual words in a paragraph.</td>
+                                        <td>
+                                            <select name="select5" id="select2">
+                                                <option value="0">Select option</option>
+                                                <option value="1">YES</option>
+                                                <option value="0">NO</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;Internal  style rules can affect multiple HTML pages in a site.</td>
+                                        <td>
+                                            <select name="select5" id="select5">
+                                                <option value="0">Select option</option>
+                                                <option value="0">YES</option>
+                                                <option value="1">NO</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;The  &lt;style&gt; tag is used to create an inline style rule.</td>
+                                        <td>
+                                            <select name="select5" id="select6">
+                                                <option value="0">Select option</option>
+                                                <option value="0">YES</option>
+                                                <option value="1">NO</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>The  &lt;thead&gt; of the HTML document is where Internal style rules must be  placed</td>
+                                        <td>
+                                            <select name="select5" id="select7">
+                                                <option value="0">Select option</option>
+                                                <option value="1">YES</option>
+                                                <option value="0">NO</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br>
+                        </div>
+                        <div class="question">
+                            <p><strong> The  Creative Commons (CC) license allows people to use and share creative works  with certain conditions. If an item is labeled as &quot;CC BY-SA,&quot; it  means the user must provide _______ and share the work under the same license.</strong></p>
+                            <label>
+                                <input type="radio" name="q2" value="0">
+                                License
+                            </label>
+                            <br>
+                            <label>
+                                <input type="radio" name="q2" value="1">
+                            </label>
+                            Attribution<br>
+                            <label>
+                                <input type="radio" name="q2" value="0">
+                                Backlink
+                            </label>
+                            <br>
+                            <label>
+                                <input type="radio" name="q2" value="0">
+                                Share  BY
+                            </label>
+                            <br>
+                        </div>
+                        <div class="question">
+                            <p><strong> Match each  with its purpose:</strong></p>
+                            <table width="auto" border="1">
+                                <tbody>
+                                    <tr>
+                                        <td width="auto">&nbsp;Helps  search engines find pages</td>
+                                        <td width="auto">
+                                            <select name="select6" id="select3">
+                                                <option value="0">Select option</option>
+                                                <option value="1">Sitemap</option>
+                                                <option value="0">Wireframe</option>
+                                                <option value="0">Mockup</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;A  high-fidelity design of a webpage.</td>
+                                        <td>
+                                            <select name="select7" id="select4">
+                                                <option value="0">Select option</option>
+                                                <option value="0">Sitemap</option>
+                                                <option value="0">Wireframe</option>
+                                                <option value="1">Mockup</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;An  interactive version of a design.</td>
+                                        <td>
+                                            <select name="select7" id="select9">
+                                                <option value="0">Select option</option>
+                                                <option value="0">Mockup</option>
+                                                <option value="1">Prototype</option>
+                                                <option value="0">Nav Menu</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;A collection of links to pages on a site.</td>
+                                        <td>
+                                            <select name="select7" id="select10">
+                                                <option value="0">Select option</option>
+                                                <option value="0">Sitemap</option>
+                                                <option value="0">Prototype</option>
+                                                <option value="1">Nav Menu</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td> &nbsp;A visual guide of a website&rsquo;s layout</td>
+                                        <td>
+                                            <select name="select7" id="select11">
+                                                <option value="0">Select option</option>
+                                                <option value="0">Sitemap</option>
+                                                <option value="1">Wireframe</option>
+                                                <option value="0">Mockup</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br>
+                        </div>
+                        <div class="question">
+                            <p><strong> A  company wants to ensure their website is accessible to users with disabilities.  Which approach should they take? </strong></p>
+                            <label>
+                                <input type="radio" name="q11" value="0">
+                                Use  bright colors and complex animations
+                            </label>
+                            <br>
+                            <label>
+                                <input type="radio" name="q11" value="1">
+                            </label>
+                            Provide  keyboard navigation and screen reader compatibility<br>
+                            <label>
+                                <input type="radio" name="q11" value="0">
+                                Disable  text resizing to maintain design consistency
+                            </label>
+                            <br>
+                            <label>
+                                <input type="radio" name="q11" value="0">
+                                Remove  all navigation menus
+                            </label>
+                            <br>
+                        </div>
+                        <div class="question">
+                            <p><strong> A  company&rsquo;s website is not ranking well in search results. What is the most  likely reason?</strong></p>
+                            <label>
+                                <input type="radio" name="q12" value="0">
+                                The  homepage has a minimalist design
+                            </label>
+                            <br>
+                            <label>
+                                <input type="radio" name="q12" value="0">
+                            </label>
+                            The  site is hosted on a fast server<br>
+                            <label>
+                                <input type="radio" name="q12" value="0">
+                                The  site uses too many images
+                            </label>
+                            <br>
+                            <label>
+                                <input type="radio" name="q12" value="1">
+                                The  site lacks relevant keywords and backlinks
+                            </label>
+                            <br>
+                        </div>
+                        <div class="question">
+                            <p><strong> A  webpage linked to another webpage is called a _______.      </strong></p>
+                            <label>
+                                <input type="radio" name="q13" value="0">
+                                Backlink
+                            </label>
+                            <br>
+                            <label>
+                                <input type="radio" name="q13" value="1">
+                            </label>
+                            Hotlink<br>
+                            <label>
+                                <input type="radio" name="q13" value="0">
+                                Link
+                            </label>
+                            <br>
+                            <label>
+                                <input type="radio" name="q13" value="0">
+                                Linked  Acess
+                            </label>
+                            <br>
+                        </div>
+                        <div class="question">
+                            <p><strong> A designer is testing a website on different devices and notices that the layout is distorted on mobile screens. What is the most likely reason?</strong></p>
+                            <label><input type="radio" name="q14" value="1"> The website is not using responsive design</label><br>
+                            <label><input type="radio" name="q14" value="0"> The website has too much white space</label><br>
+                            <label><input type="radio" name="q14" value="0"> The website loads too fast on mobile</label><br>
+                            <label><input type="radio" name="q14" value="0"> The images are too high-quality</label>
+                        </div>
+
+                        <div class="question">
+                            <p><strong> A webpage with many backlinks from high-quality sources will typically rank higher in search results.</strong></p>
+                            <label><input type="radio" name="q15" value="1"> True</label><br>
+                            <label><input type="radio" name="q15" value="0"> False</label>
+                        </div>
+
+                        <div class="question">
+                            <p><strong> An XML sitemap is automatically generated for every website.</strong></p>
+                            <label><input type="radio" name="q16" value="0"> True</label><br>
+                            <label><input type="radio" name="q16" value="1"> False</label>
+                        </div>
+
+                        <div class="question">
+                            <p><strong> A company’s website has seen a decline in traffic. What is the BEST course of action to diagnose the issue?</strong></p>
+                            <label><input type="radio" name="q17" value="0"> Remove all images and animations</label><br>
+                            <label><input type="radio" name="q17" value="1"> Check Google Analytics for traffic sources and bounce rate</label><br>
+                            <label><input type="radio" name="q17" value="0"> Disable SEO features to speed up loading time</label><br>
+                            <label><input type="radio" name="q17" value="0"> Delete older blog posts to refresh the site</label>
+                        </div>
+
+                        <div class="question">
+                            <p><strong> You are developing a dynamic website that uses a server-side language. Which of the following is the best way to test your pages without disrupting the experience of current visitors to your live site?</strong></p>
+                            <label><input type="radio" name="q18" value="1"> Set up a local testing server</label><br>
+                            <label><input type="radio" name="q18" value="0"> Press F12 to preview in a browser</label><br>
+                            <label><input type="radio" name="q18" value="0"> Test directly in Live view</label><br>
+                            <label><input type="radio" name="q18" value="0"> Using your remote server</label>
+                        </div>
+
+                        <div class="question">
+                            <p><strong> A web developer wants to enhance user experience by making a website load faster. What should they focus on?</strong></p>
+                            <label><input type="radio" name="q19" value="0"> Remove headers and footers from the site</label><br>
+                            <label><input type="radio" name="q19" value="0"> Use complex animations on every page</label><br>
+                            <label><input type="radio" name="q19" value="1"> Optimize images, enable caching, and minimize JavaScript</label><br>
+                            <label><input type="radio" name="q19" value="0"> Increase the number of background videos</label>
+                        </div>
+
+                        <div class="question">
+                            <p><strong> A business receives complaints that their e-commerce website is difficult to navigate. What should they do to improve usability?</strong></p>
+                            <label><input type="radio" name="q20" value="1"> Reduce the number of product categories and improve menu organization</label><br>
+                            <label><input type="radio" name="q20" value="0"> Add more pop-ups to highlight promotions</label><br>
+                            <label><input type="radio" name="q20" value="0"> Require users to sign in before browsing the website</label><br>
+                            <label><input type="radio" name="q20" value="0"> Use more advanced technical terms in navigation labels</label>
+                        </div>
+
+                        <div class="question">
+                            <p><strong> A _______ helps search engines understand the structure of a website by listing all its important pages.</strong></p>
+                            <label><input type="radio" name="q21" value="1"> Sitemap</label><br>
+                            <label><input type="radio" name="q21" value="0"> Style tile</label><br>
+                            <label><input type="radio" name="q21" value="0"> Wireframe</label><br>
+                            <label><input type="radio" name="q21" value="0"> SEO</label>
+                        </div>
+
+                        <div class="question">
+                            <p><strong> A company is noticing a high bounce rate on its homepage. What are potential causes of this issue? (Select all that apply.)</strong></p>
+                            <label><input type="checkbox" name="q22a" value="0"> Clear and concise navigation menu</label><br>
+                            <label><input type="checkbox" name="q22b" value="1"> Slow page loading time</label><br>
+                            <label><input type="checkbox" name="q22c" value="1"> Poor mobile optimization</label><br>
+                            <label><input type="checkbox" name="q22d" value="1"> Intrusive pop-ups or ads</label><br>
+                        </div>
+
+                        <div class="question">
+                            <p><strong> A new website has been designed, but it is not accessible to visually impaired users. What accessibility features should be added? (Select all that apply.)</strong></p>
+                            <label><input type="checkbox" name="q23a" value="1"> Screen reader support</label><br>
+                            <label><input type="checkbox" name="q23b" value="0"> Bright neon colors for all text</label><br>
+                            <label><input type="checkbox" name="q23c" value="1"> Keyboard navigation support</label><br>
+                            <label><input type="checkbox" name="q23d" value="1"> Captions for audio and video content</label><br>
+                        </div>
+
+                        <div class="question">
+                            <p><strong> A customer is shopping on an e-commerce website. They add multiple items to their cart but do not proceed to checkout. What is a possible reason for this behavior? (Select all that apply.)</strong></p>
+                            <label><input type="checkbox" name="q24a" value="1"> High shipping costs</label><br>
+                            <label><input type="checkbox" name="q24b" value="0"> The website has a secure HTTPS connection</label><br>
+                            <label><input type="checkbox" name="q24c" value="1"> No discount codes available</label><br>
+                            <label><input type="checkbox" name="q24d" value="1"> Complicated checkout process</label><br>
+                        </div>
+
+                        <div class="question">
+                            <p><strong>A company’s website is loading very slowly. What could be the reasons? (Select all that apply.)</strong></p>
+                            <label><input type="checkbox" name="q25a" value="1"> Large, unoptimized images</label><br>
+                            <label><input type="checkbox" name="q25b" value="1"> Slow server response time</label><br>
+                            <label><input type="checkbox" name="q25c" value="1"> Excessive JavaScript and animations</label><br>
+                            <label><input type="checkbox" name="q25d" value="0"> Using a responsive web design</label><br>
+                        </div>
+
+                        <div class="question">
+                            <p><strong>Match each term with its correct definition</strong></p>
+                            <table border="1">
+                                <tr>
+                                    <td>A  security measure that prevents spam from automated form submissions by  presenting a question that needs to be answered by the user. </td>
+                                    <td>
+                                        <select id="q26_1">
+                                            <option value="0">Select option</option>
+                                            <option value="1">CAPTCHA</option>
+                                            <option value="0">Metadata</option>
+                                            <option value="0">DDoS</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>A  cyberattack that overwhelms a website or online service with excessive traffic,  causing it to become slow or unavailable.</td>
+                                    <td>
+                                        <select id="q26_2">
+                                            <option value="0">Select option</option>
+                                            <option value="0">CAPTCHA</option>
+                                            <option value="1">DDoS</option>
+                                            <option value="0">Metadata</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Behind-the-scenes  text that summarizes webpage content, used by search engines to find it. </td>
+                                    <td>
+                                        <select id="q26_3">
+                                            <option value="0">Select option</option>
+                                            <option value="0">DDoS</option>
+                                            <option value="0">CAPTCHA</option>
+                                            <option value="1">Metadata</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="question">
+                            <p><strong> Match Dreamweaver panels with their descriptions</strong></p>
+                            <table border="1">
+                                <tr>
+                                    <td>Helps  you visually map elements in Live View with their HTML markup and the applied  selectors in CSS Designer. </td>
+                                    <td>
+                                        <select id="q27_1">
+                                            <option value="0">Select option</option>
+                                            <option value="1">DOM panel</option>
+                                            <option value="0">Extract panel</option>
+                                            <option value="0">Asset panel</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Allows  you to view a PSD webpage mockup and copy elements such as CSS, fonts, and  images.</td>
+                                    <td>
+                                        <select id="q27_2">
+                                            <option value="0">Select option</option>
+                                            <option value="0">DOM panel</option>
+                                            <option value="1">Extract panel</option>
+                                            <option value="0">Asset panel</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Allows  you to manage and use elements like templates, libraries, and images.</td>
+                                    <td>
+                                        <select id="q27_3">
+                                            <option value="0">Select option</option>
+                                            <option value="1">Asset panel</option>
+                                            <option value="0">DOM panel</option>
+                                            <option value="0">Extract panel</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="question">
+                            <p><strong>Match each Dreamweaver toolbar icon with its function</strong></p>
+                            <table border="1">
+                                <tr>
+                                    <td><img src="../static/images/exp.jpg" width="149" height="47" alt="Expand" /></td>
+                                    <td>
+                                        <select id="q28_1">
+                                            <option value="0">Select option</option>
+                                            <option value="1">Expand/Collapse</option>
+                                            <option value="0">Check-in</option>
+                                            <option value="0">Synchronize</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><img src="../static/images/sync.jpg" width="157" height="47" alt="Circular Arrow" /></td>
+                                    <td>
+                                        <select id="q28_2">
+                                            <option value="0">Select option</option>
+                                            <option value="0">Check-in</option>
+                                            <option value="1">Synchronize</option>
+                                            <option value="0">Expand/Collapse</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><img src="../static/images/put.jpg" width="157" height="47" alt="Arrow Up" /></td>
+                                    <td>
+                                        <select id="q28_3">
+                                            <option value="0">Select option</option>
+                                            <option value="0">Get file(s)</option>
+                                            <option value="0">Check In</option>
+                                            <option value="1">Put file(s)</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><img src="../static/images/get.jpg" width="157" height="47" alt="Arrow Down" /></td>
+                                    <td>
+                                        <select id="q28_4">
+                                            <option value="0">Select option</option>
+                                            <option value="1">Get file(s)</option>
+                                            <option value="0">Check-in files</option>
+                                            <option value="0">Synchronize</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><img src="../static/images/connect.jpg" width="169" height="50" alt="Plug connects" /></td>
+                                    <td>
+                                        <select id="q28_5">
+                                            <option value="0">Select option</option>
+                                            <option value="0">Synchronize</option>
+                                            <option value="1">Connect to remote server</option>
+                                            <option value="0">Expand/collapse</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><img src="../static/images/check-in.jpg" width="157" height="47" alt="ArrowUp+Lock" /></td>
+                                    <td>
+                                        <select id="q28_6">
+                                            <option value="0">Select option</option>
+                                            <option value="0">Get file(s)</option>
+                                            <option value="1">Check In</option>
+                                            <option value="0">Synchronize</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="question">
+                            <p><strong> Determine whether each statement is correct</strong></p>
+                            <table border="1">
+                                <tr>
+                                    <td>If you need to edit images like crop/brightness, use an external editor.</td>
+                                    <td>
+                                        <select id="q29_1">
+                                            <option value="0">Select option</option>
+                                            <option value="1">YES</option>
+                                            <option value="0">NO</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>The Optimize option in Dreamweaver lets you change image quality.</td>
+                                    <td>
+                                        <select id="q29_2">
+                                            <option value="0">Select option</option>
+                                            <option value="1">YES</option>
+                                            <option value="0">NO</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>You can permanently resize an image inside Dreamweaver.</td>
+                                    <td>
+                                        <select id="q29_3">
+                                            <option value="0">Select option</option>
+                                            <option value="0">YES</option>
+                                            <option value="1">NO</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <button type="submit">Submit</button>
+                    </form>
+                    <button class="retry-btn" id="retryBtn">Go Home</button>
+
+                </body>
+<script>
+  window.addEventListener("DOMContentLoaded", function () {
+    // Prompt user for name and email
+    let userName = "";
+    let userEmail = "";
+
+/*    while (!userName || userName.trim() === "") {
+      userName = prompt("Enter your full name (required):");
+    }
+
+    while (!userEmail || userEmail.trim() === "") {
+      userEmail = prompt("Enter your email (required):");
+    }
+    */
+    const startTime = new Date();
+
+    function formatTime(date) {
+      return date.toLocaleTimeString([], {
+        day: '2-digit',
+        month: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      });
+    }
+
+    // Form submission
+    document.getElementById("assessmentForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      clearInterval(timerInterval);
+
+      let score = 0;
+      let total = -5;
+
+      // Check <select> elements
+      const selects = document.querySelectorAll("select");
+      selects.forEach(sel => {
+        const value = sel.value;
+        if (value === "1") score += 1;
+        if (value === "1" || value === "0") total += 1;
+      });
+
+      // Check checkboxes and radios
+      const inputs = document.querySelectorAll('input[type="checkbox"], input[type="radio"]');
+      const radioGroupsCounted = new Set();
+
+      inputs.forEach(input => {
+        if (input.type === "checkbox") {
+          total += 1;
+          if (input.checked && input.value === "1") score += 1;
+        }
+
+        if (input.type === "radio") {
+          if (!radioGroupsCounted.has(input.name)) {
+            total += 1;
+            radioGroupsCounted.add(input.name);
+          }
+          if (input.checked && input.value === "1") {
+            score += 1;
+          }
+        }
+      });
+
+        document.getElementById("retryBtn").addEventListener("click", function () {
+            window.location.href = "/";
+        });
+
+      const endTime = new Date();
+
+      alert(
+        `🎓 DOMAIN 1 ASSESSMENT (MACTAY)\n\n` +
+        `👤 Name: ${userName}\n` +
+        `📧 Email: ${userEmail}\n\n` +
+        `🕒 Start Time: ${formatTime(startTime)}\n` +
+        `✅ Completion Time: ${formatTime(endTime)}\n\n` +
+        `📊 You scored ${score} out of ${total}.\n🎯 Percentage: ${(score / total * 100).toFixed(2)}%`
+      );
+
+      // Disable form inputs
+      document.querySelectorAll("select, input").forEach(el => el.disabled = true);
+
+      // Show retry button if exists
+      const retryBtn = document.getElementById("retryBtn");
+      if (retryBtn) retryBtn.style.display = "block";
+    });
+
+    // Timer logic
+    const urlParams = new URLSearchParams(window.location.search);
+    let minutes = parseInt(urlParams.get('time')) || 40;
+    let timeLeft = minutes * 60;
+
+    const timerDisplay = document.getElementById("timer");
+    const timerInterval = setInterval(() => {
+      const mins = Math.floor(timeLeft / 60);
+      const secs = timeLeft % 60;
+      if (timerDisplay) timerDisplay.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+      if (--timeLeft < 0) {
+        clearInterval(timerInterval);
+        document.getElementById("assessmentForm").requestSubmit();
+      }
+    }, 1000);
+  });
+</script>
+
+</html>
