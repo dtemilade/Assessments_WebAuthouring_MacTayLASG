@@ -24,6 +24,13 @@
     #student{
       display: none;
     }
+      textarea {
+          width: 100%;
+          height: 100px;
+          margin-top: 1rem;
+          font-size: 1rem;
+          padding: 0.5rem;
+      }
     .question-box {
       background: #fff;
       padding: 0 1rem 1rem;
@@ -68,6 +75,47 @@
       cursor: pointer;
       display: none;
     }
+      .summary-box {
+          max-width: 800px;
+          margin: 2rem auto;
+          background: #fff;
+          border-radius: 8px;
+          padding: 1rem;
+          box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      }
+
+      table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 1rem;
+      }
+
+      th, td {
+          padding: 0.5rem;
+          border: 1px solid #ccc;
+          text-align: center;
+      }
+
+      .correct {
+          color: green;
+          font-weight: bold;
+      }
+
+      .incorrect {
+          color: red;
+          font-weight: bold;
+      }
+
+      .review {
+          color: orange;
+          font-weight: bold;
+      }
+
+      .pending {
+          color: #777;
+          font-style: italic;
+      }
+
     #timer {
       position: fixed;
       top: 10px;
@@ -94,33 +142,58 @@ button {
 </head>
 <body>
 
-<div id="timer"></div>
+    <div id="timer"></div>
 
-<form id="assessment">
-  <div class="question-box">
-    <h1 style="font-size: 0.8em">DOMAIN 4 & 5 ASSESSMENT (MACTAY)</h1>
-    <div class="question-number" id="questionNumber">Task 1</div>
-    <div class="question-text" id="questionText">Loading...</div>
-    <div class="buttons">
-      <button type="button" id="prevBtn">Previous</button>
-      <button type="button" id="completeBtn">Mark Complete</button>
-      <button type="button" id="reviewBtn">Mark Review</button>
-      <button type="button" id="nextBtn">Next</button>
-      <button type="submit" id="submitBtn">Submit</button>
+    <form id="assessment">
+        <div class="question-box">
+            <h1 style="font-size: 0.8em">DOMAIN 4&5 ASSESSMENT (MACTAY)</h1>
+            <div class="question-number" id="questionNumber">Task 1</div>
+            <div class="question-text" id="questionText">Loading...</div>
+            <textarea id="answerBox" placeholder="Type your answer here..."></textarea>
+            <div class="buttons">
+                <button type="button" id="prevBtn">Previous</button>
+                <button type="button" id="completeBtn">Mark Complete</button>
+                <button type="button" id="reviewBtn">Mark Review</button>
+                <button type="button" id="nextBtn">Next</button>
+                <button type="submit" id="submitBtn">Submit</button>
+            </div>
+        </div>
+    </form>
+
+    <div class="summary-box" id="summaryBox" style="display:none;">
+        <button class="retry-btn" id="retryBtn">Go Home</button>
+        <h2>Task Summary</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th style="padding: 0 5px">Your Answer</th>
+                    <th>Status</th>
+                    <th>Result</th>
+                </tr>
+            </thead>
+            <tbody id="summaryTableBody"></tbody>
+        </table>
     </div>
-  </div>
-</form>
-
     <div id="student">
-      <label for="userName">Name:</label><br>
-      <input type="text" id="userName" name="userName" required><br><br>
+        <label for="userName">Name:</label><br>
+        <input type="text" id="userName" name="userName" required><br><br>
 
-      <label for="userEmail">Email:</label><br>
-      <input type="email" id="userEmail" name="userEmail" required><br><br>
+        <label for="userEmail">Email:</label><br>
+        <input type="email" id="userEmail" name="userEmail" required><br><br>
     </div>
 
-<button class="retry-btn" id="retryBtn">Go Home</button>
-<script>
+    <script>
+      let userName = "";
+    let userEmail = "";
+
+  /*  while (!userName || userName.trim() === "") {
+      userName = prompt("Enter your full name (required):");
+    }
+
+    while (!userEmail || userEmail.trim() === "") {
+      userEmail = prompt("Enter your email (required):");
+    }*/
   const tasks = [
     "Use the Application bar to insert a form text area after the hero section in computer store website. Name this area, comments, and give it 6 rows and 50 columns. Click anywhere in the document when done and take a screenshot.",
     "Add a block tag after heading two of hero section in index.html of computer store and type a sentence, add an inline tag within the block tag created above. After the hero section add another section with ID of aside inside the aside section add heading one and a paragraph.",
@@ -133,8 +206,8 @@ button {
     "Rename the video file in history website to history.mp4, add the video before colonial era image give it title and ID of History width and height of 400 pixel, add the following style to the header’s heading one: all side border five pixel dotted style and white color",
     "Add the following to an XML sitemap of friends meet website in the index.html document. ***<urlset xmins = http://www.sitemap.org/schemas/sitemap/0.9 <url> ***<loc> http://www.friendsmeet.com/index.html</loc> <url> ***</urlset> .   Take a screenshot and add to exam folder.",
     " create a description div with the ID description and add description one, two, three etc as text to all the six images in index.html of pexels website portfolio section, add the following style to the description text font family:baskerville group, text align center, font color is green font weight is 800 and font size 24 pixels",
-    "give all the images in music website index document ID of musix style with width and height of 200 pixel",
-    "Add 400px by 400px video.mp4 after the main section in Friends meet website make the video display image 10 before it starts playing",
+    "give 1.jp image in music website index document ID of musix. style with width and height of 200 pixel",
+    "Add 400px by 400px video.mp4 after the main section in Friends meet website make the video display instagram image before it starts playing",
     "Upload the content of index.html of computer store website to w3c for validation. Take a screenshot and add to exam folder",
     "In the index.html of data Science website, make the content of intro section and chat section float side by side using CSS designer. After summary section add audio.mp3 and display “your browser does not support this element” if a browser does not support the audio file",
     "Create services.html page in computer store website, open index.hml in Friends meet website after benefits section add heading three tag with the text “get best computing gadgets deal” and link it to services.html in computer store, give the paragraph and ID of deal and apply black background, make link color white",
@@ -145,102 +218,314 @@ button {
     "In the index.html of pexels website folder, use spell check to change the word pentagram to onstage. Take a screenshot and add to exam folder"
   ];
 
+ const correctAnswers = [
+  `<textarea name="comments" cols="50" rows="6" id="comments"></textarea>`,
 
-  let currentIndex = 0;
+  `<blockquote>
+    <p>This is the c<em>onten</em>t for Layout P Tag</p>
+  </blockquote>
+  <section id="aside">
+    <h1>This is the content for Layout H1 Tag</h1>
+    <p>This is the content for Layout P Tag</p>
+    Content for New section Tag Goes Here
+  </section>`,
+
+  `<section id="aside">
+    <h1>welcome to smartphone section</h1>
+    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metusThis is the content for Layout P Tag</p>
+    Content for New section Tag Goes Here
+  </section>
+  <style>
+    h1 {
+      background-color: black;
+      color: white;
+    }
+  </style>`,
+
+  `Site, Site Options, Check link sitewide, Broken Links, Check Links, external Links, Check Links`,
+
+  `Site, Reports, Report on Current Document, Select reports, Select Missing Alt Text under HTML Reports`,
+
+  `alt"", alt"", alt""`,
+
+  `<blockquote>
+    <p>The peaceful protests against police brutality saw major demonstrations in Lagos, especially at the Lekki Toll Gate, attracting international attention.</p>
+  </blockquote>`,
+
+  `<p>Lagos State, <span>established in 1967</span>, has played a pivotal role in Nigeria’s economic, cultural, and political development. From its days as a colonial capital to becoming <em>Africa’s fastest-growing city</em>, Lagos has a unique and vibrant history worth exploring.</p>`,
+
+  `<style>
+    span { background-color: black; color: white; }
+    .intro img {
+      border-color: red;
+      border-top-width: 15px;
+      border-bottom-width: 15px;
+      border-style: double;
+    }
+  </style>`,
+
+  `<video width="400" height="400" id="History" title="History">
+    <source src="history.mp4" type="video/mp4">
+  </video>
+  <style>
+    body header h1 {
+      border: 5px dotted white;
+    }
+  </style>`,
+
+  `File, New, XML`,
+
+  `<div id="description">
+    <div class="gallery">
+      <p><img src="1.png" alt="id one image" id="one">One</p>
+      <p><img src="2.jpg" alt="id two image" id="two">Two</p>
+      <p><img src="7.jpg" alt="id three image" id="three">Three</p>
+      <p><img src="8.jpg" alt="Portrait">Four</p>
+      <p>
+        <a href="hiphop.html">
+          <img src="5.jpg" alt="Event Capture" width="672" height="400" usemap="#wizzyMap" id="wizzy">
+          <map name="wizzyMap">
+            <area shape="circle" coords="273,128,21" href="https://www.fendi.com">
+          </map>
+        </a>
+        Five
+      </p>
+      <p><img src="6.jpg" alt="Fashion Shoot">Six</p>
+    </div>
+  </div>`,
+
+  `<img src="media/1.jpg" alt="" id="musix" />
+  <style>
+    #musix {
+      width: 200px;
+      height: 200px;
+    }
+  </style>`,
+
+  `<video width="400" height="400" poster="instagram.jpg" controls>
+    <source src="video.mp4" type="video/mp4">
+  </video>`,
+
+  `File, Validate, Current Document (W3C)`,
+
+  `<style>
+    .intro { float: left; max-width: 50%; }
+    .charts { float: left; max-width: 50%; }
+  </style>`,
+
+  `<a href="../computer store/services.html">
+    <h3 id="deal">get best computing gadgets deal</h3>
+  </a>
+  <style>
+    .benefits a #deal {
+      background-color: black;
+      color: white;
+    }
+  </style>`,
+
+  `<style>
+    body header { max-width: 80%; }
+  </style>
+  <p id="pagetop">pagetop</p>
+  <a href="#pagetop">
+    <p>back to top</p>
+  </a>`,
+
+  `Tools, Clean Up HTML / XHTML, checked Empty Container tags, Redundant nested tags, to remove`,
+
+  `css folder, main.css, h2 { font-family: Arial, sans-serif; }`,
+
+  `<style type="text/css">
+    p { color: #004d40; }
+  </style>`,
+
+  `<p>&copy; 2025 John Lens Photography | Follow on <a href="#">Onstage</a>, <a href="#">Facebook</a></p>`
+];
+
+
+const answerPointers = [
+  ["textarea", "name", "comments", "cols", "rows", "id"],
+  ["blockquote", "p", "em", "layout", "section", "aside", "h1"],
+  ["section", "aside", "h1", "p", "pellentesque", "donec", "leo", "pharetra", "background-color", "black", "color", "white"],
+  ["site", "site options", "check link sitewide", "broken links", "external links", "check links"],
+  ["site", "reports", "current document", "missing alt text", "html reports"],
+  ["alt"],
+  ["blockquote", "protests", "police brutality", "lagos", "lekki toll gate", "international", "attention", "p"],
+  ["lagos state", "1967", "economic", "cultural", "political", "colonial", "africa", "span", "em", "p"],
+  ["span", "background-color", "black", "color", "white", "intro", "img", "border-color", "border-top-width", "border-bottom-width", "border-style", "double"],
+  ["video", "width", "height", "id", "history", "title", "source", "mp4", "body", "header", "h1", "border", "5px", "dotted", "white"],
+  ["file", "new", "xml"],
+  ["div", "description", "gallery", "p", "img", "src", "alt", "id", "map", "coords", "area", "href", "usemap"],
+  ["img", "src", "alt", "id", "musix", "width", "height", "200px"],
+  ["video", "poster", "controls", "source", "mp4", "instagram.jpg"],
+  ["file", "validate", "current document", "w3c"],
+  ["intro", "charts", "float", "max-width", "50%"],
+  ["a", "href", "computer store", "services.html", "deal", "benefits", "background-color", "black", "white"],
+  ["body", "header", "max-width", "80%", "p", "pagetop", "a", "back to top"],
+  ["tools", "clean up", "html", "xhtml", "empty container", "redundant nested"],
+  ["css", "folder", "main.css", "h2", "font-family", "arial", "sans-serif"],
+  ["style", "type", "text/css", "p", "color", "#004d40"],
+  ["copyright", "2025", "john lens", "photography", "follow", "onstage", "facebook", "a"]
+];
+
+
   const answers = Array(tasks.length).fill("");
   const status = Array(tasks.length).fill("pending");
+  let currentIndex = 0;
 
   const questionNumber = document.getElementById("questionNumber");
   const questionText = document.getElementById("questionText");
+  const answerBox = document.getElementById("answerBox");
 
   const prevBtn = document.getElementById("prevBtn");
   const nextBtn = document.getElementById("nextBtn");
   const completeBtn = document.getElementById("completeBtn");
   const reviewBtn = document.getElementById("reviewBtn");
   const submitBtn = document.getElementById("submitBtn");
-  const retryBtn = document.getElementById("retryBtn");
+  const retryButton = document.getElementById("retryBtn");
 
   const nameInput = document.getElementById("userName");
   const emailInput = document.getElementById("userEmail");
 
-    let userName = nameInput.value.trim();
-    let userEmail = emailInput.value.trim();
+  const summaryBox = document.getElementById("summaryBox");
+  const summaryTableBody = document.getElementById("summaryTableBody");
 
-  while (!userName || userName.trim() === "") {
-    userName = prompt("Enter your full name (required):");
-  }
-
-  while (!userEmail || userEmail.trim() === "") {
-    userEmail = prompt("Enter your email (required):");
-  }
-
-  const startTime = new Date();
+  const startTime = new Date(); // Start time of assessment
 
   function formatTime(date) {
-    return date.toLocaleTimeString([], { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    return date.toLocaleTimeString([], {
+      day: '2-digit',
+      month: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
   }
 
-  function displayTask(index) {
+  function loadQuestion(index) {
     questionNumber.textContent = `Task ${index + 1}`;
     questionText.textContent = tasks[index];
+    answerBox.value = answers[index] || "";
     prevBtn.disabled = index === 0;
     nextBtn.disabled = index === tasks.length - 1;
   }
 
-  prevBtn.addEventListener("click", () => {
-    if (currentIndex > 0) currentIndex--;
-    displayTask(currentIndex);
+  function saveAnswer() {
+    answers[currentIndex] = normalize(document.getElementById('answerBox').value);
+  }
+
+  function normalize(line) {
+  return line.replace(/\s+/g, ' ').trim().toLowerCase();
+}
+
+function showSummary() {
+  const endTime = new Date();
+
+  // First show alert
+  alert(
+    `🎓 DOMAIN 4&5 ASSESSMENT (MACTAY)\n\n` +
+    `👤 Name: ${userName}\n` +
+    `📧 Email: ${userEmail}\n\n` +
+    `🕒 Start Time: ${formatTime(startTime)}\n` +
+    `✅ Completion Time: ${formatTime(endTime)}\n\n`
+  );
+
+  // Then show summary
+  document.getElementById("assessment").style.display = "none";
+  summaryBox.style.display = "block";
+  summaryTableBody.innerHTML = "";
+  retryBtn.style.display = "block";
+
+  let score = 0;
+
+  tasks.forEach((task, i) => {
+    const userAnswer = (answers[i] || "").toLowerCase();
+    const keywords = answerPointers[i];
+    const totalKeywords = keywords.length;
+
+    let matchCount = 0;
+    keywords.forEach(word => {
+      if (userAnswer.includes(word)) {
+        matchCount++;
+      }
+    });
+
+    let result = 'pending';
+
+    if (status[i] === 'complete' || status[i] === 'review') {
+      const percentage = matchCount / totalKeywords;
+
+      if (percentage === 1) {
+        result = 'correct';
+        score++;
+      } else if (percentage >= 0.5) {
+        result = 'partial';
+      } else {
+        result = 'incorrect';
+      }
+    }
+
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>Task ${i + 1}</td>
+      <td>${answers[i] || "<em>No answer</em>"}</td>
+      <td class="${status[i]}">${status[i]}</td>
+      <td class="${result}">${result}</td>
+    `;
+    summaryTableBody.appendChild(row);
   });
 
-  nextBtn.addEventListener("click", () => {
-    if (currentIndex < tasks.length - 1) currentIndex++;
-    displayTask(currentIndex);
-  });
+  document.getElementById("scoreSummary").innerHTML = `<strong>Score:</strong> ${score} / ${tasks.length}`;
+  retryButton.style.display = "block";
+}
 
-  completeBtn.addEventListener("click", () => {
+  prevBtn.onclick = () => {
+    if (currentIndex > 0) {
+      saveAnswer();
+      currentIndex--;
+      loadQuestion(currentIndex);
+    }
+  };
+
+  nextBtn.onclick = () => {
+    if (currentIndex < tasks.length - 1) {
+      saveAnswer();
+      currentIndex++;
+      loadQuestion(currentIndex);
+    }
+  };
+
+  completeBtn.onclick = () => {
+    saveAnswer();
     status[currentIndex] = "complete";
-    if (currentIndex < tasks.length - 1) currentIndex++;
-    displayTask(currentIndex);
-  });
+    if (currentIndex < tasks.length - 1) {
+        currentIndex++;
+        loadQuestion(currentIndex);
+}
+  };
 
-  reviewBtn.addEventListener("click", () => {
+  reviewBtn.onclick = () => {
+    saveAnswer();
     status[currentIndex] = "review";
-    if (currentIndex < tasks.length - 1) currentIndex++;
-    displayTask(currentIndex);
-  });
+  };
 
-  document.getElementById("retryBtn").addEventListener("click", function () {
-  window.location.href = "/";
-});
-
-
-  document.getElementById("assessment").addEventListener("submit", function (e) {
+  document.getElementById("assessment").onsubmit = (e) => {
     e.preventDefault();
     clearInterval(timerInterval);
+    saveAnswer();
+    showSummary();
+  };
 
-     // Disable all assessment buttons
-    const buttons = document.querySelectorAll(".buttons button");
-    buttons.forEach(btn => btn.disabled = true);
-
-    const endTime = new Date();
-
-    alert(
-      `🎓 DOMAIN 4 & 5 ASSESSMENT (MACTAY)\n\n` +
-      `👤 Name: ${userName || "Not Provided"}\n` +
-      `📧 Email: ${userEmail || "Not Provided"}\n\n` +
-      `🕒 Start Time: ${formatTime(startTime)}\n` +
-      `✅ Completion Time: ${formatTime(endTime)}\n\n`
-    );
-
-    retryBtn.style.display = "block";
+  retryButton.addEventListener("click", function () {
+    window.location.href = "/";
   });
 
-  // Timer logic
+  // Timer Logic
   const urlParams = new URLSearchParams(window.location.search);
-let minutes = parseInt(urlParams.get('time')) || 40;
-let timeLeft = minutes * 60;
-
+  let minutes = parseInt(urlParams.get('time')) || 40;
+  let timeLeft = minutes * 60;
   const timerDisplay = document.getElementById("timer");
+
   const timerInterval = setInterval(() => {
     const mins = Math.floor(timeLeft / 60);
     const secs = timeLeft % 60;
@@ -251,6 +536,8 @@ let timeLeft = minutes * 60;
     }
   }, 1000);
 
-  displayTask(currentIndex);
-</script></body>
+  // Load first question
+  loadQuestion(currentIndex);
+    </script>
+</body>
 </html>
